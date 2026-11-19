@@ -1,5 +1,7 @@
 # Buddhist Method — skill สำหรับ Claude
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Skill ที่นำหลักธรรมในพระพุทธศาสนา 6 ข้อ มาใช้เป็นวินัยการทำงานของ Claude (หรือ LLM อื่นๆ) แต่ละหลักจับ failure mode ที่ LLM พังบ่อย: เชื่อ pattern แทนที่จะ verify, แก้อาการแทนที่จะแก้เหตุ, ยอมตามแรงกดดันแทนที่จะดูหลักฐาน
 
 > 🇬🇧 Read [README.md](README.md) for the English version
@@ -35,7 +37,30 @@ skill นี้**ไม่ใช่**กรอบศาสนา ไม่ต้
 
 ## วิธีใช้
 
-### กับ Claude Code
+### กับ Claude Code (แบบ plugin แนะนำ)
+
+พิมพ์สองคำสั่งนี้ใน Claude Code:
+
+```
+/plugin marketplace add nai0om/buddhist-method
+/plugin install buddhist-method@buddhist-method
+```
+
+Plugin จาก marketplace ภายนอกไม่อัปเดตเอง ถ้าอยากได้เวอร์ชันใหม่ เปิด `/plugin` เลือก **Marketplaces** เลือก `buddhist-method` แล้วกด **Enable auto-update** หรืออัปเดตเองด้วย `claude plugin marketplace update buddhist-method` ตามด้วย `claude plugin update buddhist-method@buddhist-method`
+
+ถ้าเคยลงด้วย `git clone` มาก่อน ให้ลบ `~/.claude/skills/buddhist-method` ทิ้ง ไม่งั้น skill จะโหลดซ้ำสองตัว และเพราะแบบ plugin ไม่มีไฟล์ `~/.claude/skills/buddhist-method/SKILL.md` pointer ใน `CLAUDE.md` ที่อ้าง path นั้น (การลงแบบ manual ข้างล่างใส่ไว้ใน `~/.claude/CLAUDE.md`) จะใช้ไม่ได้ ให้เปลี่ยนไปใช้ block ในหัวข้อ "ทำให้ active ตลอด" ข้างล่างแทน
+
+### กับ agent อื่น (Codex, Cursor, Gemini CLI, Windsurf, …)
+
+ลงผ่าน [Skills CLI](https://github.com/vercel-labs/skills):
+
+```
+npx skills add nai0om/buddhist-method
+```
+
+เติม `-g` เพื่อลงให้ user ทั้งเครื่องแทน project ปัจจุบัน หรือ `-a <agent>` เพื่อเลือก agent ตัวเดียว
+
+### ลงเองแบบ manual กับ Claude Code
 
 Paste prompt นี้ลง Claude Code — clone skill และ wiring `~/.claude/CLAUDE.md` ครั้งเดียวจบ:
 
@@ -62,28 +87,35 @@ or long multi-step work, consult the buddhist-method skill at
 
 ### ทำให้ active ตลอด (ทางเลือก)
 
-ปกติ Claude จะโหลด skill on-demand — เห็น description แล้วตัดสินใจเองว่าจะอ่าน `SKILL.md` เต็มๆ ไหม ขึ้นกับงานตรงหน้า แบบนี้พอสำหรับการใช้งานทั่วไป และเก็บ context budget ไว้ใช้กับเรื่องอื่น
-
-ถ้าอยากให้ skill active ตลอดไม่ว่าทำงานอะไร เพิ่ม pointer สั้นๆ ลงใน `CLAUDE.md`:
+ปกติ agent จะโหลด skill on-demand คืออ่าน description แล้วตัดสินใจเองว่าจะเปิด `SKILL.md` ไหม และหลายครั้งก็ตอบไปเลยโดยไม่เปิด ถ้าอยากชี้ให้ agent ใช้ skill ในสถานการณ์ที่ skill นี้เขียนมาเพื่อ ให้ copy block นี้ไปใส่ในไฟล์คำสั่งที่ agent อ่าน:
 
 ```markdown
+<!-- BEGIN buddhist-method -->
 ## Working method
-For tasks involving factual claims, debugging, user pushback,
-or long multi-step work, consult the buddhist-method skill at
-~/.claude/skills/buddhist-method/SKILL.md before responding.
+Use the `buddhist-method` skill when:
+- you are about to state a fact, API, flag, or version from memory
+- a fix has failed twice, or a bug keeps coming back
+- you want to add a workaround that hides a cause
+- the user pushes back without new evidence
+- a long multi-step task is past its first few steps
+<!-- END buddhist-method -->
 ```
 
-ใส่ได้สองที่:
+| Agent | ระดับ user (ทุก project) | ระดับ project |
+|---|---|---|
+| Claude Code | `~/.claude/CLAUDE.md` หรือ `~/.claude/rules/buddhist-method.md` | `CLAUDE.md` หรือ `.claude/rules/buddhist-method.md` |
+| Codex | `~/.codex/AGENTS.md` | `AGENTS.md` |
+| agent อื่น | ไฟล์คำสั่งระดับ user ของ agent นั้น | `AGENTS.md` หรือไฟล์คำสั่งระดับ project ของ agent นั้น |
 
-- **`CLAUDE.md` ใน project root** — ทำงานเฉพาะใน project นั้น
-- **`~/.claude/CLAUDE.md`** — ทำงานทุก project ของ Claude Code
-
-Pointer สั้นแค่ไม่กี่บรรทัด ไม่กิน context มาก Claude ยังโหลด body ของ skill ตอน trigger ติดเหมือนเดิม — แค่การันตีว่า skill อยู่ในสายตา Claude เสมอ
+Claude Code ไม่อ่าน `AGENTS.md` ถ้า project เก็บคำสั่งไว้ที่นั่น ให้ใส่ `@AGENTS.md` ใน `CLAUDE.md` block นี้กินแค่ไม่กี่สิบ token ต่อ session และ body ของ skill จะโหลดเฉพาะตอนเจอสถานการณ์ที่ระบุไว้ ส่วน comment `BEGIN` กับ `END` ใช้ทำเครื่องหมายให้หา อัปเดต หรือลบ block นี้ทีหลังได้ง่าย
 
 ## โครงสร้าง
 
 ```
 buddhist-method/
+├── .claude-plugin/
+│   ├── plugin.json                       # manifest ของ Claude Code plugin
+│   └── marketplace.json                  # ให้ /plugin marketplace add หาเจอ
 ├── SKILL.md                              # 6 หลัก core + dispatch
 ├── README.md                             # เวอร์ชันอังกฤษ
 ├── README.th.md                          # ไฟล์นี้
