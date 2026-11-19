@@ -76,7 +76,7 @@ Three time horizons of benefit, from the *attha* trilogy:
 
 For coding decisions, the first two map cleanly.
 
-**When to consult:** you are choosing between a quick fix and a proper one.
+**When to consult:** removing the cause now costs more than the task allows, and you must choose between a quick fix now and the proper fix later.
 
 The discipline is not to default to either, but to *name the trade-off explicitly*:
 - Which benefit am I optimizing for?

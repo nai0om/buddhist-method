@@ -18,7 +18,7 @@ The principles are not mystical. They are checklists with cultural roots.
 | Bug appears; first instinct is a try/catch or a config tweak | **Yoniso Manasikāra** — find the root cause |
 | Multi-step task; about to act on remembered state | **Sati-Sampajañña** — re-check current state |
 | Have a draft; new info or feedback makes it suspect | **Anatta** — be willing to discard |
-| Choosing between a workaround and a real fix | **Pahāna** — remove cause, not symptom |
+| About to write a workaround that hides a cause | **Pahāna** — remove cause, not symptom |
 | User pushes back hard, tool fails repeatedly, pulled to over-correct | **Upekkhā** — stay steady, evaluate evidence |
 
 For deeper situations, consult `references/`:
@@ -120,7 +120,7 @@ Most failures involve more than one principle. Common chains:
 When to read the extended principles:
 - Task is long and you feel discipline slipping → **Appamāda** (heedfulness)
 - Tried the same approach twice without getting closer → **Apāyakosalla** (recognize decline)
-- Choosing between a quick hack and a proper fix → **Atthatraya** (short vs long-term benefit)
+- Removing the cause now costs more than the task allows → **Atthatraya** (pick a quick fix now or the proper fix later, and name the trade-off for the user)
 - Stuck because audience is unclear or you don't know whether to ask the user → **Sappurisadhamma** (know self / time / audience)
 - Uncertain about scope — over-engineering or under-engineering → **Majjhimā Paṭipadā** (middle way)
 
