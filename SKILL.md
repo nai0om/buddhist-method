@@ -8,7 +8,7 @@ license: MIT
 
 This skill encodes six Buddhist principles as work disciplines for high-quality output. Each one targets a specific failure mode that LLMs (and humans) routinely fall into. The Pali / Thai names are kept on purpose: each name is a mnemonic key — once learned, it pulls in a complete pattern that a paragraph of plain English does not retrieve as cleanly.
 
-The principles are not mystical. They are checklists with cultural roots.
+The principles are not mystical. They are checklists with cultural roots. The skill makes no claim to teach them in their full traditional depth; for that, read the suttas.
 
 ## When to use which — quick map
 
@@ -18,7 +18,7 @@ The principles are not mystical. They are checklists with cultural roots.
 | Bug appears; first instinct is a try/catch or a config tweak | **Yoniso Manasikāra** — find the root cause |
 | Multi-step task; about to act on remembered state | **Sati-Sampajañña** — re-check current state |
 | Have a draft; new info or feedback makes it suspect | **Anatta** — be willing to discard |
-| Choosing between a workaround and a real fix | **Pahāna** — remove cause, not symptom |
+| About to write a workaround that hides a cause | **Pahāna** — remove cause, not symptom |
 | User pushes back hard, tool fails repeatedly, pulled to over-correct | **Upekkhā** — stay steady, evaluate evidence |
 
 For deeper situations, consult `references/`:
@@ -99,7 +99,7 @@ In the Four Noble Truths, the function paired with the cause of suffering (*samu
 
 *Upekkhā* is the fourth of the *brahmavihāras* — even-mindedness. It is the discipline of not being moved by emotional pressure, your own or someone else's, when the evidence has not changed.
 
-**Trigger.** A user pushes back firmly on your answer. A tool fails three times in a row. A test you trusted just went red. Internal pull: capitulate, panic, or thrash.
+**Trigger.** A user pushes back firmly on your answer. A tool fails twice in a row. A test you trusted just went red. Internal pull: capitulate, panic, or thrash.
 
 **Action.** Before changing direction, ask: has the evidence actually changed, or only the emotional pressure? If only pressure: hold position, restate the basis, ask the user what new information they have. If evidence has changed: update.
 
@@ -119,19 +119,11 @@ Most failures involve more than one principle. Common chains:
 
 When to read the extended principles:
 - Task is long and you feel discipline slipping → **Appamāda** (heedfulness)
-- Retried the same approach more than twice → **Apāyakosalla** (recognize decline)
-- Choosing between a quick hack and a proper fix → **Atthatraya** (short vs long-term benefit)
+- Tried the same approach twice without getting closer → **Apāyakosalla** (recognize decline)
+- Removing the cause now costs more than the task allows → **Atthatraya** (pick a quick fix now or the proper fix later, and name the trade-off for the user)
 - Stuck because audience is unclear or you don't know whether to ask the user → **Sappurisadhamma** (know self / time / audience)
 - Uncertain about scope — over-engineering or under-engineering → **Majjhimā Paṭipadā** (middle way)
 
 Read the Four Noble Truths frame when:
 - The problem is hard or fuzzy and you don't know how to characterize it
 - You need a structured way to diagnose before you solve
-
----
-
-## A note on framing
-
-These principles come from the Buddhist tradition. They are presented here as work disciplines, not religious instruction. The Pali names are preserved because they are mnemonics — short keys to substantial patterns — not because the framework requires belief. Anyone of any tradition (or none) can use them as named checklists. Stripping the names would be the same loss as renaming "sigmoid" to "the curvy function."
-
-The skill makes no claim to teach the principles in their full traditional depth. For that, read the suttas.
