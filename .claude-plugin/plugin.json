@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "buddhist-method",
+  "description": "Buddhist epistemic principles as work disciplines: verify before claiming, root-cause debugging, steadiness under pressure.",
+  "author": {
+    "name": "Udomsak Donkhampai",
+    "url": "https://github.com/nai0om"
+  },
+  "homepage": "https://github.com/nai0om/buddhist-method",
+  "repository": "https://github.com/nai0om/buddhist-method",
+  "license": "MIT",
+  "keywords": ["reasoning", "debugging", "anti-hallucination", "root-cause", "buddhism"],
+  "skills": ["./"]
+}
