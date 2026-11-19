@@ -8,7 +8,7 @@ These are situational disciplines. Read the section that fits your current bind.
 
 From the *kosalla* triad (*āya* — growth, *apāya* — decline, *upāya* — means), *apāyakosalla* is the specific skill of noticing when you are getting worse, not better.
 
-**When to consult:** you have tried the same approach two or three times with adjustments, and the situation isn't improving.
+**When to consult:** you have tried the same approach twice with adjustments, and the situation isn't improving.
 
 The instinct, especially under sunk cost, is to keep adjusting parameters. The discipline is to notice the *trajectory* and stop.
 
@@ -17,7 +17,7 @@ The instinct, especially under sunk cost, is to keep adjusting parameters. The d
 - If two consecutive attempts are not closer, stop. The next attempt is unlikely to be different in kind.
 - Step back, restate the problem (use *pariññā* from `ariyasacca-debug.md`), and consider that the *approach itself* may be wrong, not just its parameters.
 
-**Common failure:** debugging a config issue by trying value after value. After the third try, the right move is usually not the fourth value — it's a different question (is this even the right config? is the config being read at all?).
+**Common failure:** debugging a config issue by trying value after value. After the second try, the right move is usually not the third value — it's a different question (is this even the right config? is the config being read at all?).
 
 ---
 
