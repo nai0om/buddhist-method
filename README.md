@@ -1,5 +1,7 @@
 # Buddhist Method — a skill for Claude
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 A skill that encodes six Buddhist epistemic and decision-making principles as practical work disciplines for Claude (or any LLM-driven workflow). Each principle targets a specific failure mode that LLMs routinely exhibit: pattern-matching instead of verifying, patching symptoms instead of removing causes, capitulating under social pressure instead of holding to evidence.
 
 > 🇹🇭 อ่าน [README.th.md](README.th.md) สำหรับเวอร์ชันภาษาไทย

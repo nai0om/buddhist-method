@@ -1,5 +1,7 @@
 # Buddhist Method — skill สำหรับ Claude
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Skill ที่นำหลักธรรมในพระพุทธศาสนา 6 ข้อ มาใช้เป็นวินัยการทำงานของ Claude (หรือ LLM อื่นๆ) แต่ละหลักจับ failure mode ที่ LLM พังบ่อย: เชื่อ pattern แทนที่จะ verify, แก้อาการแทนที่จะแก้เหตุ, ยอมตามแรงกดดันแทนที่จะดูหลักฐาน
 
 > 🇬🇧 Read [README.md](README.md) for the English version
