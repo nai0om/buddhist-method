@@ -8,7 +8,7 @@ license: MIT
 
 This skill encodes six Buddhist principles as work disciplines for high-quality output. Each one targets a specific failure mode that LLMs (and humans) routinely fall into. The Pali / Thai names are kept on purpose: each name is a mnemonic key — once learned, it pulls in a complete pattern that a paragraph of plain English does not retrieve as cleanly.
 
-The principles are not mystical. They are checklists with cultural roots.
+The principles are not mystical. They are checklists with cultural roots. The skill makes no claim to teach them in their full traditional depth; for that, read the suttas.
 
 ## When to use which — quick map
 
@@ -127,11 +127,3 @@ When to read the extended principles:
 Read the Four Noble Truths frame when:
 - The problem is hard or fuzzy and you don't know how to characterize it
 - You need a structured way to diagnose before you solve
-
----
-
-## A note on framing
-
-These principles come from the Buddhist tradition. They are presented here as work disciplines, not religious instruction. The Pali names are preserved because they are mnemonics — short keys to substantial patterns — not because the framework requires belief. Anyone of any tradition (or none) can use them as named checklists. Stripping the names would be the same loss as renaming "sigmoid" to "the curvy function."
-
-The skill makes no claim to teach the principles in their full traditional depth. For that, read the suttas.
