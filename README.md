@@ -48,14 +48,7 @@ Run these two commands inside Claude Code:
 
 Third-party plugins do not update on their own. To get new versions, run `/plugin`, open **Marketplaces**, pick `buddhist-method`, and choose **Enable auto-update**. Or update by hand with `claude plugin marketplace update buddhist-method` and then `claude plugin update buddhist-method@buddhist-method`.
 
-If you installed the skill earlier with `git clone`, delete `~/.claude/skills/buddhist-method` so it does not load twice. A plugin install has no `~/.claude/skills/buddhist-method/SKILL.md`, so wherever a `CLAUDE.md` points at that path (the manual install below adds one to `~/.claude/CLAUDE.md`, and "Make it always active" shows another), use this pointer instead:
-
-```markdown
-## Working method
-For tasks involving factual claims, debugging, user pushback,
-or long multi-step work, consult the buddhist-method skill
-before responding.
-```
+If you installed the skill earlier with `git clone`, delete `~/.claude/skills/buddhist-method` so it does not load twice. A plugin install has no `~/.claude/skills/buddhist-method/SKILL.md`, so any `CLAUDE.md` pointer that names that path (the manual install below adds one to `~/.claude/CLAUDE.md`) stops working. Replace it with the block in "Make it always active" below.
 
 ### With other agents (Codex, Cursor, Gemini CLI, Windsurf, …)
 
@@ -94,23 +87,27 @@ The `SKILL.md` and `references/` files are readable on their own. Each principle
 
 ### Make it always active (optional)
 
-By default, Claude loads the skill on demand — it sees the description and decides whether to read the full `SKILL.md` based on the task at hand. That is fine for most uses, and it keeps your context budget free for everything else.
-
-If you want the skill to be a persistent reminder regardless of task, add a small pointer to your `CLAUDE.md`:
+By default the agent loads the skill on demand: it reads the skill's description and decides for itself whether to open `SKILL.md`, and it often answers without opening it. To point the agent at the skill in the situations it was written for, copy this block into an instructions file your agent reads:
 
 ```markdown
+<!-- BEGIN buddhist-method -->
 ## Working method
-For tasks involving factual claims, debugging, user pushback,
-or long multi-step work, consult the buddhist-method skill at
-~/.claude/skills/buddhist-method/SKILL.md before responding.
+Use the `buddhist-method` skill when:
+- you are about to state a fact, API, flag, or version from memory
+- a fix has failed twice, or a bug keeps coming back
+- you want to add a workaround that hides a cause
+- the user pushes back without new evidence
+- a long multi-step task is past its first few steps
+<!-- END buddhist-method -->
 ```
 
-Two places you can put this:
+| Agent | User scope (every project) | Project scope |
+|---|---|---|
+| Claude Code | `~/.claude/CLAUDE.md` or `~/.claude/rules/buddhist-method.md` | `CLAUDE.md` or `.claude/rules/buddhist-method.md` |
+| Codex | `~/.codex/AGENTS.md` | `AGENTS.md` |
+| Other agents | the agent's user-level instructions file | `AGENTS.md` or the agent's project instructions file |
 
-- **Project root `CLAUDE.md`** — applies only when working in that project.
-- **`~/.claude/CLAUDE.md`** — applies globally across all your Claude Code sessions.
-
-The pointer is only a few lines, so it doesn't bloat your context. Claude still loads the body of the skill progressively when triggers fire — you are just guaranteeing that the skill stays on Claude's radar.
+Claude Code does not read `AGENTS.md`; if your project keeps its instructions there, add `@AGENTS.md` to `CLAUDE.md`. The block costs a few dozen tokens per session, and the skill body loads only when one of the listed situations comes up. The `BEGIN` and `END` comments mark the block so you can find, update, or remove it later.
 
 ## Structure
 
