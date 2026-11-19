@@ -35,7 +35,37 @@ skill นี้**ไม่ใช่**กรอบศาสนา ไม่ต้
 
 ## วิธีใช้
 
-### กับ Claude Code
+### กับ Claude Code (แบบ plugin แนะนำ)
+
+พิมพ์สองคำสั่งนี้ใน Claude Code:
+
+```
+/plugin marketplace add nai0om/buddhist-method
+/plugin install buddhist-method@buddhist-method
+```
+
+Plugin จาก marketplace ภายนอกไม่อัปเดตเอง ถ้าอยากได้เวอร์ชันใหม่ เปิด `/plugin` เลือก **Marketplaces** เลือก `buddhist-method` แล้วกด **Enable auto-update** หรืออัปเดตเองด้วย `claude plugin marketplace update buddhist-method` ตามด้วย `claude plugin update buddhist-method@buddhist-method`
+
+ถ้าเคยลงด้วย `git clone` มาก่อน ให้ลบ `~/.claude/skills/buddhist-method` ทิ้ง ไม่งั้น skill จะโหลดซ้ำสองตัว และเพราะแบบ plugin ไม่มีไฟล์ `~/.claude/skills/buddhist-method/SKILL.md` ทุก `CLAUDE.md` ที่ชี้ path นั้น (การลงแบบ manual ข้างล่างใส่ไว้ใน `~/.claude/CLAUDE.md` และหัวข้อ "ทำให้ active ตลอด" ก็มีอีกอัน) ให้ใช้ pointer นี้แทน:
+
+```markdown
+## Working method
+For tasks involving factual claims, debugging, user pushback,
+or long multi-step work, consult the buddhist-method skill
+before responding.
+```
+
+### กับ agent อื่น (Codex, Cursor, Gemini CLI, Windsurf, …)
+
+ลงผ่าน [Skills CLI](https://github.com/vercel-labs/skills):
+
+```
+npx skills add nai0om/buddhist-method
+```
+
+เติม `-g` เพื่อลงให้ user ทั้งเครื่องแทน project ปัจจุบัน หรือ `-a <agent>` เพื่อเลือก agent ตัวเดียว
+
+### ลงเองแบบ manual กับ Claude Code
 
 Paste prompt นี้ลง Claude Code — clone skill และ wiring `~/.claude/CLAUDE.md` ครั้งเดียวจบ:
 
@@ -84,6 +114,9 @@ Pointer สั้นแค่ไม่กี่บรรทัด ไม่ก�
 
 ```
 buddhist-method/
+├── .claude-plugin/
+│   ├── plugin.json                       # manifest ของ Claude Code plugin
+│   └── marketplace.json                  # ให้ /plugin marketplace add หาเจอ
 ├── SKILL.md                              # 6 หลัก core + dispatch
 ├── README.md                             # เวอร์ชันอังกฤษ
 ├── README.th.md                          # ไฟล์นี้

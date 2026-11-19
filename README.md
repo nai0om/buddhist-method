@@ -35,7 +35,37 @@ The skill is **not** a religious framework. It does not require belief, ritual, 
 
 ## How to use
 
-### With Claude Code
+### With Claude Code (plugin, recommended)
+
+Run these two commands inside Claude Code:
+
+```
+/plugin marketplace add nai0om/buddhist-method
+/plugin install buddhist-method@buddhist-method
+```
+
+Third-party plugins do not update on their own. To get new versions, run `/plugin`, open **Marketplaces**, pick `buddhist-method`, and choose **Enable auto-update**. Or update by hand with `claude plugin marketplace update buddhist-method` and then `claude plugin update buddhist-method@buddhist-method`.
+
+If you installed the skill earlier with `git clone`, delete `~/.claude/skills/buddhist-method` so it does not load twice. A plugin install has no `~/.claude/skills/buddhist-method/SKILL.md`, so wherever a `CLAUDE.md` points at that path (the manual install below adds one to `~/.claude/CLAUDE.md`, and "Make it always active" shows another), use this pointer instead:
+
+```markdown
+## Working method
+For tasks involving factual claims, debugging, user pushback,
+or long multi-step work, consult the buddhist-method skill
+before responding.
+```
+
+### With other agents (Codex, Cursor, Gemini CLI, Windsurf, …)
+
+Install with the [Skills CLI](https://github.com/vercel-labs/skills):
+
+```
+npx skills add nai0om/buddhist-method
+```
+
+Add `-g` to install it for your user instead of the current project, or `-a <agent>` to target one agent.
+
+### Manual install for Claude Code
 
 Paste this prompt into Claude Code — it clones the skill and wires up `~/.claude/CLAUDE.md` in one step:
 
@@ -84,6 +114,9 @@ The pointer is only a few lines, so it doesn't bloat your context. Claude still 
 
 ```
 buddhist-method/
+├── .claude-plugin/
+│   ├── plugin.json                       # Claude Code plugin manifest
+│   └── marketplace.json                  # lets /plugin marketplace add find it
 ├── SKILL.md                              # six core principles + dispatch
 ├── README.md                             # this file
 ├── README.th.md                          # Thai version
